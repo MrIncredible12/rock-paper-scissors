@@ -34,4 +34,19 @@ function getComputerChoice() {
     console.log(compChoice);
 }
 
+/*
+DECLARE function called getHumanChoice.
+    PROMPT user "Rock, paper, or scissors?".
+    FORCE string to be all lowercase.
+    ASSIGN string to userChoice.
+OUTPUT userChoice to console.
+*/
+
+function getHumanChoice(){
+    userChoice = prompt("Rock, paper, or scissors?", "");
+    userChoice = userChoice.toLowerCase();
+    console.log(userChoice);
+}
+
 getComputerChoice();
+getHumanChoice();
