@@ -21,3 +21,17 @@ DECLARE getComputerChoice function.
     END IF ELSE BLOCK.
 OUTPUT to console the computer choice to ensure desired outcomes.
 */
+
+function getComputerChoice() {
+    compChoice = Math.floor(Math.random() * 3);
+    if (compChoice == 0) {
+        compChoice = "rock";
+    } else if (compChoice == 1) {
+        compChoice = "paper";
+    } else {
+        compChoice = "scissors";
+    }
+    console.log(compChoice);
+}
+
+getComputerChoice();
