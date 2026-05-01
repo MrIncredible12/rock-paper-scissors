@@ -116,8 +116,22 @@ function playRound(humanChoice, computerChoice) {
 }
 
 // Assign user and computer selections to constants.
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
+
+/* 
+DECLARE function named playGame.
+INSERT both playRound function and both scoring variables inside playGame function.
+RUN playRound function.
+RESET variables within humanSelection and computerSelection.
+RUN playRound function again (five times in total).
+IF both humanScore and computerScore sum total is 5:
+    IF humanScore is greater than computerScore:
+        OUTPUT "Congratulations! You've won the game!"
+    ELSE 
+        OUTPUT "Game over. You lost."
+*/
+
 
 // Play game.
 playRound(humanSelection, computerSelection);
