@@ -2,8 +2,8 @@
 console.log("Hello World");
 
 // DECLARE global variables.
-let compChoice;
-let userChoice;
+let humanScore = 0;
+let computerScore = 0;
 
 /*
 DECLARE getComputerChoice function.
@@ -22,7 +22,7 @@ DECLARE getComputerChoice function.
 OUTPUT to console the computer choice to ensure desired outcomes.
 */
 
-function getComputerChoice() {
+function getComputerChoice(compChoice) {
     compChoice = Math.floor(Math.random() * 3);
     if (compChoice == 0) {
         compChoice = "rock";
@@ -32,21 +32,52 @@ function getComputerChoice() {
         compChoice = "scissors";
     }
     console.log(compChoice);
+    return compChoice;
 }
 
 /*
 DECLARE function called getHumanChoice.
     PROMPT user "Rock, paper, or scissors?".
-    FORCE string to be all lowercase.
-    ASSIGN string to userChoice.
-OUTPUT userChoice to console.
+    ASSIGN string to humanChoice.
+OUTPUT humanChoice to console.
 */
 
-function getHumanChoice(){
+function getHumanChoice(userChoice){
     userChoice = prompt("Rock, paper, or scissors?", "");
-    userChoice = userChoice.toLowerCase();
     console.log(userChoice);
+    return userChoice;
 }
 
-getComputerChoice();
-getHumanChoice();
+/*
+DECLARE function called playRound with two parameters: humanChoice and computerChoice.
+    FORCE humanChoice parameter to all lower case.
+    IF humanChoice and computerChoice are identical:
+        OUTPUT "It's a tie".
+    ELSE that the two strings are different:
+        IF humanChoice selected "rock":
+            IF computerChoice selected "scissors":
+                INCREMENT humanScore.
+                OUTPUT "You win. Rock beats scissors."
+            ELSE computerChoice selected "paper":
+                INCREMENT computerScore.
+
+*/
+
+let playRound = (humanChoice, computerChoice) {
+    
+}
+
+// Assign user and computer selections to constants.
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+// Play game.
+playRound(humanSelection, computerSelection);
+
+// Winning conditions.
+/*if (humanScore === 5) {
+    console.log("Congratulations you win!");
+} else if (computerScore === 5) {
+    console.log("You lose! Game over.");
+}
+    */
