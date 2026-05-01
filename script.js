@@ -42,7 +42,7 @@ DECLARE function called getHumanChoice.
 OUTPUT humanChoice to console.
 */
 
-function getHumanChoice(userChoice){
+function getHumanChoice(userChoice) {
     userChoice = prompt("Rock, paper, or scissors?", "");
     console.log(userChoice);
     return userChoice;
@@ -60,11 +60,59 @@ DECLARE function called playRound with two parameters: humanChoice and computerC
                 OUTPUT "You win. Rock beats scissors."
             ELSE computerChoice selected "paper":
                 INCREMENT computerScore.
-
+                OUTPUT "You lose. Rock loses to paper."
+        IF humanChoice selected "paper":
+            IF computerChoice selected "rock":
+                INCREMENT humanScore.
+                OUTPUT "You win. Paper beats rock."
+            ELSE computerChoice selected "scissors":
+                INCREMENT computerScore.
+                OUTPUT "You lose. Paper loses to scissors."
+        IF humanChoice selected "scissors":
+            IF computerChoice selected "paper":
+                INCREMENT humanScore.
+                OUTPUT "You win. Scissors beats paper."
+            ELSE computerChoice selected "rock":
+                INCREMENT computerScore.
+                OUTPUT "You lose. Scissors loses to rock."
 */
 
-let playRound = (humanChoice, computerChoice) {
-    
+function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
+    if (humanChoice === computerChoice) {
+        console.log("It's a tie.");
+        return;
+    } else {
+        switch (humanChoice) {
+            case "rock":
+                if (computerChoice === "scissors") {
+                    humanScore += 1;
+                    console.log("You win! Rock beats scissors.");
+                } else {
+                    computerScore += 1;
+                    console.log("You lose! Rock loses to paper.");
+                }
+                break;
+            case "paper":
+                if (computerChoice === "rock") {
+                    humanScore += 1;
+                    console.log("You win! Paper beats rock.");
+                } else {
+                    computerScore += 1;
+                    console.log("You lose! Paper loses to scissors.");
+                }
+                break;
+            case "scissors":
+                if (computerChoice === "paper") {
+                    humanScore += 1;
+                    console.log("You win! Scissors beats paper.");
+                } else {
+                    computerScore += 1;
+                    console.log("You lose! Scissors loses to rock.");
+                }
+                break;
+        }
+    }
 }
 
 // Assign user and computer selections to constants.
@@ -74,10 +122,3 @@ const computerSelection = getComputerChoice();
 // Play game.
 playRound(humanSelection, computerSelection);
 
-// Winning conditions.
-/*if (humanScore === 5) {
-    console.log("Congratulations you win!");
-} else if (computerScore === 5) {
-    console.log("You lose! Game over.");
-}
-    */
