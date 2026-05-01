@@ -48,8 +48,27 @@ function getHumanChoice(userChoice) {
     return userChoice;
 }
 
-/*
-DECLARE function called playRound with two parameters: humanChoice and computerChoice.
+/* 
+DECLARE function named playGame.
+INSERT both playRound function and both scoring variables inside playGame function.
+RUN playRound function.
+RESET variables within humanSelection and computerSelection.
+RUN playRound function again (five times in total).
+IF both humanScore and computerScore sum total is 5:
+    IF humanScore is greater than computerScore:
+        OUTPUT "Congratulations! You've won the game!"
+    ELSE 
+        OUTPUT "Game over. You lost."
+*/
+
+// playGame function
+function playGame() {
+    // Assign user and computer selections to constants.
+    let humanSelection = getHumanChoice();
+    let computerSelection = getComputerChoice();
+
+    /*
+    DECLARE function called playRound with two parameters: humanChoice and computerChoice.
     FORCE humanChoice parameter to all lower case.
     IF humanChoice and computerChoice are identical:
         OUTPUT "It's a tie".
@@ -75,64 +94,73 @@ DECLARE function called playRound with two parameters: humanChoice and computerC
             ELSE computerChoice selected "rock":
                 INCREMENT computerScore.
                 OUTPUT "You lose. Scissors loses to rock."
-*/
+    */
 
-function playRound(humanChoice, computerChoice) {
-    humanChoice = humanChoice.toLowerCase();
-    if (humanChoice === computerChoice) {
-        console.log("It's a tie.");
-        return;
-    } else {
-        switch (humanChoice) {
-            case "rock":
-                if (computerChoice === "scissors") {
-                    humanScore += 1;
-                    console.log("You win! Rock beats scissors.");
-                } else {
-                    computerScore += 1;
-                    console.log("You lose! Rock loses to paper.");
-                }
-                break;
-            case "paper":
-                if (computerChoice === "rock") {
-                    humanScore += 1;
-                    console.log("You win! Paper beats rock.");
-                } else {
-                    computerScore += 1;
-                    console.log("You lose! Paper loses to scissors.");
-                }
-                break;
-            case "scissors":
-                if (computerChoice === "paper") {
-                    humanScore += 1;
-                    console.log("You win! Scissors beats paper.");
-                } else {
-                    computerScore += 1;
-                    console.log("You lose! Scissors loses to rock.");
-                }
-                break;
+    function playRound(humanChoice, computerChoice) {
+        humanChoice = humanChoice.toLowerCase();
+        if (humanChoice === computerChoice) {
+            console.log("It's a tie.");
+            return;
+        } else {
+            switch (humanChoice) {
+                case "rock":
+                    if (computerChoice === "scissors") {
+                        humanScore += 1;
+                        console.log("You win! Rock beats scissors.");
+                    } else {
+                        computerScore += 1;
+                        console.log("You lose! Rock loses to paper.");
+                    }
+                    break;
+                case "paper":
+                    if (computerChoice === "rock") {
+                        humanScore += 1;
+                        console.log("You win! Paper beats rock.");
+                    } else {
+                        computerScore += 1;
+                        console.log("You lose! Paper loses to scissors.");
+                    }
+                    break;
+                case "scissors":
+                    if (computerChoice === "paper") {
+                        humanScore += 1;
+                        console.log("You win! Scissors beats paper.");
+                    } else {
+                        computerScore += 1;
+                        console.log("You lose! Scissors loses to rock.");
+                    }
+                    break;
+            }
         }
     }
+    playRound(humanSelection, computerSelection);
+
+    // Round 2
+    humanSelection = getHumanChoice();
+    computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+    // Round 3
+    humanSelection = getHumanChoice();
+    computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+    // Round 4
+    humanSelection = getHumanChoice();
+    computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+    // Round 5
+    humanSelection = getHumanChoice();
+    computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+
+    // Winning and losing conditions
+    if (humanScore > computerScore) {
+        console.log("Congratulations! You win!");
+    } else {
+        console.log("Game over. You lost.");
+    }
+
 }
 
-// Assign user and computer selections to constants.
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
-
-/* 
-DECLARE function named playGame.
-INSERT both playRound function and both scoring variables inside playGame function.
-RUN playRound function.
-RESET variables within humanSelection and computerSelection.
-RUN playRound function again (five times in total).
-IF both humanScore and computerScore sum total is 5:
-    IF humanScore is greater than computerScore:
-        OUTPUT "Congratulations! You've won the game!"
-    ELSE 
-        OUTPUT "Game over. You lost."
-*/
-
-
 // Play game.
-playRound(humanSelection, computerSelection);
+playGame();
 
